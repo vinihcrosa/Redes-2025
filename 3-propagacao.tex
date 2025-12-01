@@ -1,0 +1,46 @@
+\section{Vetores de Propagação}
+
+Com base na literatura analisada, ransomware se propaga principalmente por cinco mecanismos:
+
+\subsection{Phishing e Engenharia Social}
+
+É o vetor mais comum (≈ 60–70\% dos ataques).
+\begin{itemize}
+  \item E-mails com anexos maliciosos.
+  \item Links para websites comprometidos.
+  \item Documentos do Office com macros.
+\end{itemize}
+
+\subsection{Exploração de Vulnerabilidades (CVEs)}
+
+Segundo Saccone et al., a exploração de falhas públicas é o principal método de acesso inicial em ataques modernos.
+
+As CVEs mais exploradas envolvem:
+\begin{itemize}
+  \item Vulnerabilidades em serviços de rede expostos.
+  \item Falhas em softwares amplamente usados.
+  \item Protocolos de comunicação inseguros.
+\end{itemize}
+
+Gangues generalistas, como LockBit e ALPHV, exploram vulnerabilidades recém-divulgadas (zero-day ou N-day) para ganhar vantagem estratégica.
+
+\subsection{Ataques a RDP e Credenciais Comprometidas}
+
+\begin{itemize}
+  \item Quebra de senhas fracas.
+  \item Uso de credenciais vazadas na dark web.
+	\item Abuso de protocolos de acesso remoto.
+\end{itemize}
+
+\subsection{Cadeia de Suprimentos}
+
+Ataques via fornecedores ou atualizações comprometidas.
+
+\subsection{Propagação Interna Automatizada}
+Após o acesso inicial, o ransomware muitas vezes se replica pela rede usando:
+  
+	\begin{itemize}
+	\item Mimikatz para extração de credenciais,
+	\item Execução de comandos remotos,
+	\item Exploração de SMB e Active Directory mal configurado.
+	\end{itemize}

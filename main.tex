@@ -6,9 +6,26 @@
 \usepackage{geometry}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath, amssymb}
+\usepackage{stmaryrd}
 \usepackage{hyperref}
 \usepackage{csquotes}
 \usepackage[backend=biber, style=abnt, language=brazil]{biblatex}
+\usepackage{newunicodechar}
+
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{–}{--}
+\newunicodechar{—}{---}
+\newunicodechar{“}{``}
+\newunicodechar{”}{''}
+\newunicodechar{•}{\textbullet}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{⚡}{\ensuremath{\lightning}}
+\newunicodechar{✅}{\checkmark}
+\newunicodechar{✔}{\checkmark}
+\newunicodechar{⸻}{---}
+\newunicodechar{￼}{}
+\newunicodechar{�}{}
 
 \usepackage[most]{tcolorbox}
 
@@ -45,6 +62,7 @@ bottom=2.5cm
 
 \input{1-introducao}
 \input{2-evoulucao-ransonware}
+\input{3-propagacao.tex}
 
 \printbibliography
 
