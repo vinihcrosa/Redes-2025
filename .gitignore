@@ -16,6 +16,8 @@
 *.cb2
 .*.lb
 *.bbl-SAVE-ERROR
+*.blg-SAVE-ERROR
+*.bcf-SAVE-ERROR
 *.aux
 
 ## Intermediate documents:
