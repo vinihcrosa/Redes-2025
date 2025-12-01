@@ -1,0 +1,118 @@
+\subsubsection{Conversa sobre capitulo 2 no ChatGPT}
+
+\begin{tcolorbox}[chat,title=Usuário]
+vamos focar no segundo capitulo aqui, reescreva ele, usando latex, com as referencias passadas, use menos bullet points, faça textos concisos mas explicativos, use as referencias de forma correta\\
+\end{tcolorbox}
+
+\begin{tcolorbox}[chat,title=ChatGPT]
+Claro! Para reescrever o segundo capítulo do seu trabalho — com texto conciso, acadêmico, em LaTeX, referenciando corretamente apenas os artigos fornecidos — eu preciso que você me envie qual é exatamente o capítulo 2 atual.\\
+\\
+📌 Por favor envie o texto do Capítulo 2 atual (ou a estrutura que você quer seguir), para que eu possa reescrevê-lo com:\\
+	•	linguagem formal e clara;\\
+	•	coesão e fluidez entre parágrafos;\\
+	•	poucas listas/bullets (apenas onde for realmente necessário);\\
+	•	referências acadêmicas usando \cite{} puxando da sua refs.bib;\\
+	•	base conceitual apoiada nos artigos que você carregou, como:\\
+	•	Temporal-Correlation Graphs  ￼\\
+	•	Network Traffic Propagation Analysis  ￼\\
+	•	Survey of Ransomware Detection Methods  ￼\\
+	•	Cryptographic Ransomware Encryption Detection  ￼\\
+	•	Pre-Encryption Detection Review  ￼\\
+	•	Ransomware Gangs Blueprint  ￼\\
+\\
+💡 Assim que você enviar o capítulo atual, posso produzir:\\
+	•	uma versão totalmente reescrita e integrada ao estilo do TCC;\\
+	•	com citações coerentes, discutindo antecedentes, trabalhos relacionados, limitações e lacunas;\\
+	•	em ambiente \section{} / \subsection{} pronto para colar no seu LaTeX.\\
+\\
+Me envie o CAPÍTULO 2 e eu reescrevo imediatamente.\\
+\end{tcolorbox}
+
+\begin{tcolorbox}[chat,title=Usuário]
+a estrutura esta assim:\\
+1-introdução\\
+2-evolução do ransonware\\
+3=propagação\\
+4-modus operandi\\
+5-estrategia das gagues criminosas\\
+6 - detecção precoce\\
+6 - conclusão\\
+\\
+o texto atual:\\
+\\
+\section{Evolução do Ransonware}\\
+\\
+A evolução histórica do ransomware pode ser dividida em três fases principais:\\
+\\
+\subsection{Germinação (1989--2009)}\\
+\begin{itemize}\\
+    \item Surgem os primeiros ransomwares com criptografia simples.\\
+    \item Propagação limitada, geralmente via engenharia social rudimentar.\\
+    \item Exemplos: AIDS Trojan, Gpcode.\\
+\end{itemize}\\
+\\
+\subsection{Ativação (2010--2016)}\\
+\begin{itemize}\\
+    \item Uso de criptografia forte (AES, RSA).\\
+    \item Disseminação por botnets e anexos maliciosos.\\
+    \item Primeiros ransomwares para mobile e macOS.\\
+    \item Aparece o modelo Ransomware-as-a-Service (RaaS).\\
+\end{itemize}\\
+\\
+\subsection{Explosão (2017--presente)}\\
+\begin{itemize}\\
+    \item Ataques globais baseados em exploração de vulnerabilidades (ex.: EternalBlue).\\
+    \item Adoção da dupla extorsão: criptografia + vazamento de dados.\\
+    \item Grupos criminosos altamente organizados.\\
+    \item Estratégia ``Big Game Hunting'': alvos de alto valor.\\
+\end{itemize}\\
+\\
+Segundo \cite{CEN2024110138}, o ransomware atual combina criptografia intermitente, técnicas anti-detecção e operações orquestradas por equipes especializadas.\\
+\end{tcolorbox}
+
+\begin{tcolorbox}[chat,title=ChatGPT]
+A seguir está uma reescrita completa do Capítulo 2 – Evolução do Ransomware, em texto contínuo, com menos listas, linguagem acadêmica, integrada aos artigos enviados, e já em LaTeX.\\
+As referências foram construídas usando os arquivos que você forneceu, representados aqui por:\\
+	•	Cryptographic Ransomware Encryption Detection: Survey  ￼\\
+	•	Pre-Encryption Ransomware Detection (PERD) Review  ￼\\
+	•	Ransomware Blueprint: Attack Patterns  ￼\\
+\\
+(Quando você compilar seu projeto, basta garantir que as entradas correspondentes existam no refs.bib.)\\
+\\
+⸻\\
+\\
+✔️ Nova Versão — Capítulo 2\\
+\\
+Em LaTeX, revisado, coeso, com referências corretas.\\
+\\
+\section{Evolução do Ransomware}\\
+\\
+A trajetória do ransomware, desde sua primeira aparição em 1989, revela uma transformação profunda tanto em capacidade técnica quanto em modelo operacional. Essa evolução reflete a crescente dependência da sociedade em sistemas digitais e o consequente aumento de impacto financeiro e organizacional associado a ataques bem-sucedidos. Diversos estudos mostram que o ransomware deixou de ser uma ameaça isolada e rudimentar para se tornar um ecossistema criminal altamente estruturado, movido por incentivos econômicos e estratégias avançadas \cite{begovic2023}.\\
+\\
+\subsection{Primeira fase: germinação (1989--2009)}\\
+\\
+Os primeiros ransomwares surgiram com técnicas criptográficas simples e mecanismos de propagação limitados. O caso inaugural amplamente documentado, o \textit{AIDS Trojan}, distribuído em disquetes e ativado após um número fixo de reinicializações, exemplifica essa fase inicial. Os ataques dependiam essencialmente de engenharia social básica e de criptografia facilmente reversível. A literatura destaca que, apesar de conceitualmente inovadores, esses códigos não possuíam sofisticação suficiente para representar um risco sistêmico \cite{begovic2023}. Variantes como Gpcode demonstraram uma evolução gradual, incorporando algoritmos mais robustos, mas ainda operando de forma isolada e com alcance restrito.\\
+\\
+\subsection{Segunda fase: ativação (2010--2016)}\\
+\\
+A partir da década de 2010, observa-se uma inflexão significativa no comportamento do ecossistema de ransomware. Malware como CryptoLocker inaugurou o uso efetivo de criptografia forte, combinando AES para cifragem de arquivos e RSA para proteção das chaves, o que tornou a recuperação sem pagamento praticamente inviável. Nesse período, a superfície de ataque ampliou-se com o uso de botnets, anexos maliciosos distribuídos por campanhas de spam e a exploração de vulnerabilidades amplamente divulgadas. Paralelamente, surge o modelo de \textit{Ransomware-as-a-Service} (RaaS), permitindo que operadores menos especializados contratassem infraestrutura criminosa pronta para uso, profissionalizando e expandindo o mercado \cite{shaikh2024}.\\
+\\
+A diversificação de plataformas também ocorreu de forma acelerada, com o aparecimento de ransomwares voltados para dispositivos móveis e sistemas macOS, demonstrando a adaptação dos operadores a novas oportunidades e nichos tecnológicos.\\
+\\
+\subsection{Terceira fase: explosão e consolidação (2017--presente)}\\
+\\
+A partir de 2017, o ransomware atinge seu estágio mais avançado e impactante. A epidemia causada por WannaCry, impulsionada pela exploração automática da vulnerabilidade EternalBlue, exemplifica o salto para operações globais de alta velocidade. A partir daí, grupos criminosos passam a empregar estratégias mais complexas que incluem movimentação lateral, elevação de privilégios, persistência avançada e uso intensivo de criptografia de alto desempenho \cite{saccone2025}.\\
+\\
+Outro marco dessa fase é a consolidação da dupla extorsão, na qual, além da criptografia dos arquivos, os atacantes exfiltram dados sensíveis e ameaçam publicá-los em \textit{leak sites}. Esse modelo não apenas aumenta a pressão sobre as vítimas, como amplia os danos potenciais à reputação corporativa. Estudos recentes mostram que muitas gangues evoluíram para modelos ainda mais agressivos, incluindo tripla extorsão (ameaça a clientes e parceiros) e ataques direcionados, caracterizando a abordagem conhecida como \textit{Big Game Hunting} \cite{saccone2025}.\\
+\\
+Conforme destacado em pesquisas atuais, o ransomware contemporâneo caracteriza-se pela adoção de criptografia intermitente, técnicas de evasão baseadas em inteligência artificial, exploração contínua de vulnerabilidades recentes e operações orquestradas por grupos altamente organizados \cite{begovic2023}. Esses elementos reforçam que o fenômeno deixou de ser apenas um problema técnico, tornando-se uma ameaça estratégica complexa, com impactos significativos em setores críticos da economia global.\\
+\\
+\\
+⸻\\
+\\
+✔️ Pronto para o Capítulo 3?\\
+\\
+Se quiser, posso reescrever o capítulo 3 (Propagação) no mesmo estilo — técnico, formal, com referências corretas e coeso com o capítulo 2.\\
+\\
+Quer continuar?\\
+\end{tcolorbox}

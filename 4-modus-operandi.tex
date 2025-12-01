@@ -1,0 +1,57 @@
+\section{Modus Operandi: O Ciclo de Ataque de Ransomware}
+
+Com base no modelo unificado apresentado por Saccone et al. e nos fluxos identificados por Sudheer (2024) e Cen et al. (2024), o modus operandi pode ser estruturado em um kill chain de 4 estágios:
+
+
+\subsection{Fase 1 — Reconhecimento e Entrega}
+
+O grupo criminoso identifica:
+\begin{itemize}
+  \item infraestrutura exposta,
+  \item vulnerabilidades,
+  \item funcionários suscetíveis a phishing.
+\end{itemize}
+
+O ransomware chega ao sistema via:
+\begin{itemize}
+  \item phishing,
+  \item exploit,
+  \item malvertising,
+  \item mídias removíveis.
+  \item etc.
+\end{itemize}
+
+\subsection{Fase 2 — Instalação e Movimentação Lateral}
+
+O malware:
+\begin{itemize}
+  \item cria persistencia (tarefas agendadas, serviços),
+  \item explora falhas internas,
+  \item coleta credenciais,
+  \item identifica servidores críticos.
+\end{itemize}
+
+Grupos avançados usam TTPs (MITRE ATT&CK) padronizadas, como:
+\begin{itemize}
+  \item T1569 – System Services
+  \item T1078 – Valid Accounts
+  \item T1003 – Credential Dumping
+\end{itemize}
+\subsection{Fase 3 — Destruição}
+
+Envolve:
+\begin{itemize}
+  \item exclusão de backups locais,
+  \item desabilitação de antivírus,
+  \item criptografia seletiva ou intermitente,
+  \item roubo de dados (dupla extorsão).
+\end{itemize}
+
+\subsection{Fase 4 — Extorsão}
+
+O atacante exige pagamento e ameaça:
+\begin{itemize}
+  \item não devolver o acesso,
+  \item vazar dados sensíveis,
+  \item realizar ataques adicionais (DDoS, tripla extorsão).
+\end{itemize}
