@@ -1,0 +1,88 @@
+\subsection{Busca de artigos}
+Nesse prompts foi apresentado o tema do artigo pedido para o modelo indicar artigos sobre o tema.
+
+\begin{tcolorbox}[chat,title=Usuário]
+chat, eu peciso fazer um trabalho de redes da faculdade, meu grupo escolheu o tema "Propagação e modus operandi de ransoware", eu preciso de artigos cientificos sobre isso, pelo menos 10
+\end{tcolorbox}
+
+\begin{tcolorbox}[chat,breakable,title=ChatGPT]
+Vou te passar uma lista já “pronta pra referência” com foco em propagação e modus operandi de ransomware. \\
+Vou separar em:\\
+	•	Artigos internacionais (em inglês)\\
+	•	Trabalhos em português (úteis pra parte de contexto e legislação)\\
+    
+
+1. Artigos internacionais (inglês) – foco técnico\\
+	1.	Cen, M. et al. – “Ransomware Early Detection: A Survey” (2024, Computer Networks)\\
+	•	Tipo: survey\\
+	•	Foco: descreve o modus operandi geral do ransomware (fase de intrusão, movimentação lateral, criptografia, pedido de resgate) e mapeia técnicas de detecção em cada etapa.\\
+	2.	Saccone, F. et al. – “The Ransomware Blueprint: Attack Patterns and Strategic Behaviours” (2025)\\
+	•	Tipo: artigo de pesquisa\\
+	•	Foco: analisa padrões de ataque, variações de modus operandi entre diferentes grupos e como isso impacta defesa. Ótimo pra descrever a “cadeia de ataque” típica.\\
+	3.	[Autores diversos] – “Ransomware Attacks and Their Evolving Strategies: A Systematic Review of Recent Incidents” (2023/2024) – systematic review\\
+	•	Tipo: revisão sistemática\\
+	•	Foco: discute a evolução das táticas (double extortion, data leak, RaaS), tendências de ataque e como o modus operandi mudou nos últimos anos.\\
+	4.	Begović, K. et al. – “Cryptographic Ransomware Encryption Detection: Survey” (2023)\\
+	•	Tipo: survey\\
+	•	Foco: explica bem como o ransomware usa criptografia (algoritmos, chaves, fluxo de cifragem) e técnicas de detecção baseadas nesse comportamento.\\
+	5.	[Autores diversos] – “A Survey of Ransomware Detection Methods” (2024, preprint/ResearchGate)\\
+	•	Tipo: survey\\
+	•	Foco: revisa métodos de detecção, mas dedica partes à caracterização do comportamento de ransomware (como eles agem no sistema e na rede).\\
+	6.	[Autores diversos] – “Measuring Ransomware Propagation Patterns via Network Traffic Analysis: An Automated Approach” (2024)\\
+	•	Tipo: artigo experimental\\
+	•	Foco: mede padrões de propagação pela rede, usando sandbox + análise de tráfego. Excelente para a parte de “como o ransomware se espalha em redes corporativas”.\\
+	7.	[Autores diversos] – “Algorithmic Segmentation and Behavioral Profiling for Ransomware Threat Detection” (2025, arXiv preprint)
+	•	Tipo: artigo de pesquisa\\
+	•	Foco: usa modelos baseados em grafos para mapear caminhos de propagação e sequência de ações do ransomware, criando perfis comportamentais.\\
+	8.	[Autores diversos] – “Pre-Encryption Ransomware Detection (PERD) Taxonomy, Challenges and Future Directions” (2024)  \\
+	•	Tipo: revisão sistemática\\
+	•	Foco: organiza o “kill chain” do ransomware antes da criptografia (infeção, persistência, reconhecimento, etc.), o que ajuda a descrever o modus operandi passo a passo.\\
+	9.	Artigo técnico sobre WannaCry – “Dynamic Analysis of WannaCry Ransomware: Infection, Persistence and Propagation Mechanisms” (2025, estudo dinâmico)\\
+	•	Tipo: estudo de caso técnico\\
+	•	Foco: disseca o WannaCry, detalhando mecanismos de infecção, persistência e propagação tipo “worm”. Ótimo exemplo concreto de modus operandi.\\
+	10.	[Autores diversos] – “Inside LockBit: Technical, Behavioral, and Financial Analysis of a Ransomware Giant” (2025, arXiv preprint)\\
+	•	Tipo: estudo de um grupo específico\\
+	•	Foco: usa o vazamento do painel do LockBit para reconstruir operações, cronologia, padrões de comportamento e fluxo financeiro – perfeito para mostrar modus operandi de uma gangue RaaS real.\\
+	11.	[Autores diversos] – “The Evolving Menace of Ransomware: A Comparative Analysis of Extortion Models” (ACM, 2022/2023) \\
+	•	Tipo: artigo de pesquisa\\
+	•	Foco: compara modelos de extorsão (single extortion, double extortion, triple extortion), explicando como o modelo de negócio influencia o modo de operação do ataque.\\
+\\
+2. Trabalhos em português (bom pra contextualizar no Brasil)\\
+\\
+Estes são ótimos para:\\
+	•	contextualizar juridicamente,\\
+	•	citar dados e definições em PT-BR,\\
+	•	e reforçar a parte de modus operandi de forma mais textual.\\
+
+	12.	Rezende, A. – “A Profecia Ransomware e o Fenômeno Cibernético Contemporâneo” (Ministério Público de MG, ~2023)\\
+	•	Tipo: artigo jurídico/técnico\\
+	•	Foco: discute o software malicioso, evolução do ransomware e seu modus operandi, além de problemas de rastreabilidade e tendências.\\
+	13.	Silva Júnior, L. C. – “Ransomware: Análise Técnica e Prevenção” (Monografia – UFOP, 2023) \\
+	•	Tipo: TCC técnico\\
+	•	Foco: faz um estudo técnico do ransomware, abordando funcionamento, vetores de ataque, impacto e medidas de prevenção.\\
+	14.	Rezende, F. R.; Nascimento, C. G. – “Ransomware: A problemática do ataque e o impacto do balanceamento de dados em algoritmos de classificação de ataques” (IF Goiano, 2025)\\
+	•	Tipo: TCC em Sistemas de Informação\\
+	•	Foco: trabalha com classificação de ataques de ransomware usando IA, mas traz uma boa contextualização do problema e do ataque em si.\\
+	15.	Candido, J. W. – “Segurança da informação com foco na prevenção de ataques de ransomware” (Revista Foco, 2023)\\
+	•	Tipo: artigo acadêmico\\
+	•	Foco: apresenta os problemas causados por ransomware, funcionamento básico e medidas de segurança, útil para introdução.\\
+	16.	Silva, L. C. et al. – “Ransomware: origens, consequências e prevenção” (2023)\\
+	•	Tipo: artigo científico\\
+	•	Foco: aborda origens, consequências e formas de prevenção, incluindo descrição geral do modus operandi.\\
+\\
+Como usar isso no seu trabalho\\
+
+Sugestão de estrutura pra parte teórica:\\
+	•	Seção 1 – Conceitos básicos e histórico\\
+Use os artigos 3, 11, 12, 15, 16.\\
+	•	Seção 2 – Modus operandi (cadeia de ataque)\\
+Use 1, 2, 3, 8, 9, 10.\\
+	•	Seção 3 – Propagação em redes e ambientes corporativos\\
+Use 6, 7, 9.\\
+	•	Seção 4 – Detecção e mitigação (visão geral)\\
+Use 1, 4, 5, 8, 14.\\
+\\
+Se você quiser, no próximo passo eu posso:\\
+	•	montar as referências já em ABNT ou APA, e/ou\\
+	•	te ajudar a alinhar a introdução e objetivos do trabalho com esse tema.\\
+\end{tcolorbox}

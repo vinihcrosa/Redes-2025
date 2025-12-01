@@ -1,0 +1,53 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage[backend=biber, style=abnt, language=brazil]{biblatex}
+
+\usepackage[most]{tcolorbox}
+
+\tcbset{
+  chat/.style={
+    colback=gray!5,
+    colframe=gray!50,
+    arc=2pt,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt,
+    boxrule=0.4pt,
+    breakable % ← ESSENCIAL PARA TEXTOS GRANDES
+  }
+}
+
+\geometry{
+left=3cm,
+right=2cm,
+top=2.5cm,
+bottom=2.5cm
+}
+
+\addbibresource{refs.bib}
+
+\title{Redes-2025}
+\author{Vinicius H. C. Rosa, 9395067}
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\input{1-introducao}
+\input{2-evoulucao-ransonware}
+
+\printbibliography
+
+\input{IA/IA}
+
+\end{document}
