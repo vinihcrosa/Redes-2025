@@ -1,57 +1,43 @@
 \section{Modus Operandi: O Ciclo de Ataque de Ransomware}
 
-Com base no modelo unificado apresentado por Saccone et al. e nos fluxos identificados por Sudheer (2024) e Cen et al. (2024), o modus operandi pode ser estruturado em um kill chain de 4 estágios:
-
+O \textit{kill chain} de ransomware segue um padrão recorrente identificado em grandes bases de incidentes \cite{SACCONE2025104264,CEN2024110138,enisa_2023}: uma fase inicial de reconhecimento e entrega, seguida de instalação e movimentação lateral, impacto (criptação e sabotagem) e extorsão. A maturidade de Ransomware-as-a-Service permite que afiliados escolham TTPs conforme alvo e pressa operacional \cite{Alzahrani_2025}.
 
 \subsection{Fase 1 — Reconhecimento e Entrega}
 
-O grupo criminoso identifica:
+O atacante mapeia a superfície exposta (serviços, VPN/RDP, aplicações web) e perfis de usuários suscetíveis a phishing. Vetores típicos incluem:
 \begin{itemize}
-  \item infraestrutura exposta,
-  \item vulnerabilidades,
-  \item funcionários suscetíveis a phishing.
+  \item phishing e \textit{malspam} com macros ou links \cite{CEN2024110138,shaikh2024};
+  \item exploração de CVEs em serviços expostos (T1190), muitas vezes N-day de alta severidade \cite{SACCONE2025104264};
+  \item malvertising e \textit{drive-by} via kits de exploit \cite{CEN2024110138};
+  \item cadeia de suprimentos e atualizações adulteradas \cite{enisa_2023}.
 \end{itemize}
 
-O ransomware chega ao sistema via:
+\subsection{Fase 2 — Instalação, Persistência e Movimentação Lateral}
+
+O payload estabelece persistência (tarefas agendadas, serviços) e coleta credenciais para ampliar o domínio:
 \begin{itemize}
-  \item phishing,
-  \item exploit,
-  \item malvertising,
-  \item mídias removíveis.
-  \item etc.
+  \item T1078 (contas válidas) e T1003 (credential dumping) para ganhar acesso lateral \cite{SACCONE2025104264};
+  \item uso de ferramentas nativas (\textit{living off the land}) para evitar detecção \cite{CEN2024110138};
+  \item propagação automática via SMB/AD mal configurados, com velocidade mensurável em tráfego de rede \cite{alibis2024measuring}.
 \end{itemize}
+Grupos generalistas (LockBit, ALPHV) tendem a combinar exploits recentes com bruteforce de RDP/VPN, enquanto especialistas preferem credenciais vazadas e menor ruído \cite{SACCONE2025104264}.
 
-\subsection{Fase 2 — Instalação e Movimentação Lateral}
+\subsection{Fase 3 — Impacto: Criptografia, Sabotagem e Exfiltração}
 
-O malware:
+Antes da cifragem, o malware neutraliza defesas, remove backups locais e inventaria arquivos críticos \cite{Begovic_2023}. Técnicas observadas:
 \begin{itemize}
-  \item cria persistencia (tarefas agendadas, serviços),
-  \item explora falhas internas,
-  \item coleta credenciais,
-  \item identifica servidores críticos.
+  \item criptação seletiva ou intermitente para acelerar impacto e reduzir rastros \cite{Begovic_2023};
+  \item exfiltração prévia de dados sensíveis (dupla/tripla extorsão) \cite{enisa_2023};
+  \item uso de T1486 (Data Encrypted for Impact) como etapa final do ciclo técnico \cite{SACCONE2025104264}.
 \end{itemize}
+Modelos comportamentais recentes indicam aceleração e correlação temporal entre varredura interna, picos de I/O e início da cifragem, úteis para detecção pré-encriptação \cite{rollere2025algorithmicsegmentationbehavioralprofiling}.
 
-Grupos avançados usam TTPs (MITRE ATT\&CK) padronizadas, como:
+\subsection{Fase 4 — Extorsão e Negociação}
+
+Com dados cifrados e/ou exfiltrados, o grupo inicia comunicação controlada (portais Tor, chats) e apresenta exigências:
 \begin{itemize}
-  \item T1569 – System Services
-  \item T1078 – Valid Accounts
-  \item T1003 – Credential Dumping
+  \item entrega de chave mediante pagamento e promessa de não vazamento;
+  \item ameaça de publicar dados e/ou conduzir DDoS como pressão adicional \cite{enisa_2023};
+  \item em operações RaaS, divisão de receita entre operador e afiliado \cite{Alzahrani_2025}.
 \end{itemize}
-\subsection{Fase 3 — Destruição}
-
-Envolve:
-\begin{itemize}
-  \item exclusão de backups locais,
-  \item desabilitação de antivírus,
-  \item criptografia seletiva ou intermitente,
-  \item roubo de dados (dupla extorsão).
-\end{itemize}
-
-\subsection{Fase 4 — Extorsão}
-
-O atacante exige pagamento e ameaça:
-\begin{itemize}
-  \item não devolver o acesso,
-  \item vazar dados sensíveis,
-  \item realizar ataques adicionais (DDoS, tripla extorsão).
-\end{itemize}
+Essa etapa fecha o ciclo econômico do ataque, mas pode ser reaberta caso a vítima negocie parcialmente ou atrase, gerando novas alavancas de coerção.
