@@ -1,46 +1,23 @@
 \section{Vetores de Propagação}
 
-Com base na literatura analisada, ransomware se propaga principalmente por cinco mecanismos:
+Os estudos recentes convergem para um conjunto recorrente de vetores de propagação. As pesquisas de Cen et al. \cite{CEN2024110138}, Alzahrani et al. \cite{Alzahrani_2025} e Saccone et al. \cite{SACCONE2025104264} mostram que os operadores combinam ataques de phishing, exploração de CVEs, abuso de credenciais e efeitos em cadeia para maximizar a taxa de entrada e cobertura na rede vítima.
 
 \subsection{Phishing e Engenharia Social}
 
-É o vetor mais comum (≈ 60–70\% dos ataques).
-\begin{itemize}
-  \item E-mails com anexos maliciosos.
-  \item Links para websites comprometidos.
-  \item Documentos do Office com macros.
-\end{itemize}
+Campanhas de \textit{malspam} continuam sendo a forma mais frequente de entrega inicial, aproveitando anexos com macros ou links para \textit{payloads} hospedados externamente \cite{CEN2024110138}. O trabalho de Shaikh et al. evidencia que a expansão do trabalho remoto aumentou a superfície de ataque para e-mails maliciosos e \textit{mails} de spear-phishing \cite{shaikh2024}. Saccone et al. mostram que gangues "especialistas" dependem mais de phishing e reutilização de credenciais do que grupos generalistas \cite{SACCONE2025104264}.
 
-\subsection{Exploração de Vulnerabilidades (CVEs)}
+\subsection{Exploração de Vulnerabilidades (CVEs) e Serviços Expostos}
 
-Segundo Saccone et al., a exploração de falhas públicas é o principal método de acesso inicial em ataques modernos.
+A base de 16 mil incidentes analisada por Saccone et al. revela que a técnica T1190 (exploração de serviços expostos) é um dos pontos mais usados no \textit{kill chain}, com destaque para falhas de alta severidade \cite{SACCONE2025104264}. O modelo de Ransomware-as-a-Service descrito por Alzahrani et al. indica que afiliados exploram CVEs antigas em sistemas desatualizados, mantendo baixo custo de intrusão \cite{Alzahrani_2025}. Na fase inicial, Cen et al. listam exploração remota (RCE) e kits de \textit{exploit} como vetores típicos \cite{CEN2024110138}, reforçando a necessidade de gestão de patches e redução de superfície exposta.
 
-As CVEs mais exploradas envolvem:
-\begin{itemize}
-  \item Vulnerabilidades em serviços de rede expostos.
-  \item Falhas em softwares amplamente usados.
-  \item Protocolos de comunicação inseguros.
-\end{itemize}
+\subsection{Ataques a RDP, VPN e Credenciais Comprometidas}
 
-Gangues generalistas, como LockBit e ALPHV, exploram vulnerabilidades recém-divulgadas (zero-day ou N-day) para ganhar vantagem estratégica.
+Segundo Cen et al., serviços de área remota com senhas fracas ou reaproveitadas são frequentemente violados por \textit{brute force} para entrega do \textit{payload} \cite{CEN2024110138}. Saccone et al. apontam que grupos especializados em setores específicos privilegiam credenciais vazadas ou compradas para evitar ruído de exploração \cite{SACCONE2025104264}. Esses vetores aparecem no estágio P1 da cadeia de ataque de Cen et al., antes mesmo de qualquer persistência ou movimento lateral \cite{CEN2024110138}.
 
-\subsection{Ataques a RDP e Credenciais Comprometidas}
+\subsection{Cadeia de Suprimentos e Atualizações Comprometidas}
 
-\begin{itemize}
-  \item Quebra de senhas fracas.
-  \item Uso de credenciais vazadas na dark web.
-	\item Abuso de protocolos de acesso remoto.
-\end{itemize}
-
-\subsection{Cadeia de Suprimentos}
-
-Ataques via fornecedores ou atualizações comprometidas.
+Cen et al. destacam que atualizações de software e dependências confiáveis podem ser adulteradas para entregar o ransomware, explorando a relação de confiança entre fornecedor e cliente \cite{CEN2024110138}. Esse vetor dilui a origem do ataque e dificulta a detecção precoce, pois o tráfego aparenta ser legítimo e assinado.
 
 \subsection{Propagação Interna Automatizada}
-Após o acesso inicial, o ransomware muitas vezes se replica pela rede usando:
-  
-	\begin{itemize}
-	\item Mimikatz para extração de credenciais,
-	\item Execução de comandos remotos,
-	\item Exploração de SMB e Active Directory mal configurado.
-	\end{itemize}
+
+Após o acesso inicial, a movimentação lateral tende a ser rápida e automatizada. Cen et al. descrevem o uso de protocolos de compartilhamento de arquivos e ferramentas internas para ampliar o alcance do \textit{payload} \cite{CEN2024110138}, enquanto Saccone et al. mapeiam a sequência TTP que vai de escalada de privilégios à criptografia (T1486) \cite{SACCONE2025104264}. Estudos focados em tráfego, como Akibis et al. \cite{alibis2024measuring}, medem a velocidade de varredura e variação de pacotes durante esse movimento lateral, fornecendo indicadores para detecção antes da cifragem. Rollere et al. mostram que gráficos de correlação temporal destacam essa aceleração do comportamento e ajudam a sinalizar hosts recém-comprometidos \cite{rollere2025algorithmicsegmentationbehavioralprofiling}.
