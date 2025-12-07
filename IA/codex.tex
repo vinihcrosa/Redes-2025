@@ -1,0 +1,49 @@
+\subsection{Codex}
+O Codex é um modelo de linguagem desenvolvido pela OpenAI, 
+especializado em compreender e gerar código de programação.
+Ele é treinado em uma vasta quantidade de dados de código-fonte,
+o que lhe permite auxiliar em tarefas como escrita, depuração e explicação
+de código em várias linguagens de programação.
+
+Para esse projeto o Codex foi utilizado para modificar diretamente o texto, 
+dessa forma o retorno do prompt é o próprio código LaTeX modificado, e algum comentário
+feito no chat.
+
+\subsubsection{Parte 3}
+
+\begin{tcolorbox}[chat,title=Usuário]
+chat, dados os pdfs que estão em /docs, cada todos eles tem sua referencia no refs.bib, escreva a section 3-propagacao.tex, usando sempre que possivel as referencias\\
+\end{tcolorbox}
+
+\begin{tcolorbox}[chat,title=Codex Chat]
+Atualizei 3-propagacao.tex com uma descrição completa dos vetores de propagação, ancorando cada subtópico nas fontes do diretório docs e no refs.bib. As subseções agora cobrem phishing, exploração de CVEs, abuso de RDP/VPN e credenciais, cadeia de suprimentos e propagação interna automatizada, citando Cen, Alzahrani, Saccone, Shaikh, Akibis e Rollere.\\
+\\
+Se quiser conferir o resultado final em PDF, basta recompilar o LaTeX (latexmk -pdf main.tex).\\
+\end{tcolorbox}
+
+\begin{tcolorbox}[chat,title=Codex Output]
+\textbackslash{}section\{Vetores de Propagação\}\\
+\\
+Os estudos recentes convergem para um conjunto recorrente de vetores de propagação. As pesquisas de Cen et al. \textbackslash{}cite\{CEN2024110138\}, Alzahrani et al. \textbackslash{}cite\{Alzahrani\_2025\} e Saccone et al. \textbackslash{}cite\{SACCONE2025104264\} mostram que os operadores combinam ataques de phishing, exploração de CVEs, abuso de credenciais e efeitos em cadeia para maximizar a taxa de entrada e cobertura na rede vítima.\\
+\\
+\textbackslash{}subsection\{Phishing e Engenharia Social\}\\
+\\
+Campanhas de \textbackslash{}textit\{malspam\} continuam sendo a forma mais frequente de entrega inicial, aproveitando anexos com macros ou links para \textbackslash{}textit\{payloads\} hospedados externamente \textbackslash{}cite\{CEN2024110138\}. O trabalho de Shaikh et al. evidencia que a expansão do trabalho remoto aumentou a superfície de ataque para e-mails maliciosos e \textbackslash{}textit\{mails\} de spear-phishing \textbackslash{}cite\{shaikh2024\}. Saccone et al. mostram que gangues "especialistas" dependem mais de phishing e reutilização de credenciais do que grupos generalistas \textbackslash{}cite\{SACCONE2025104264\}.\\
+\\
+\textbackslash{}subsection\{Exploração de Vulnerabilidades (CVEs) e Serviços Expostos\}\\
+\\
+A base de 16 mil incidentes analisada por Saccone et al. revela que a técnica T1190 (exploração de serviços expostos) é um dos pontos mais usados no \textbackslash{}textit\{kill chain\}, com destaque para falhas de alta severidade \textbackslash{}cite\{SACCONE2025104264\}. O modelo de Ransomware-as-a-Service descrito por Alzahrani et al. indica que afiliados exploram CVEs antigas em sistemas desatualizados, mantendo baixo custo de intrusão \textbackslash{}cite\{Alzahrani\_2025\}. Na fase inicial, Cen et al. listam exploração remota (RCE) e kits de \textbackslash{}textit\{exploit\} como vetores típicos \textbackslash{}cite\{CEN2024110138\}, reforçando a necessidade de gestão de patches e redução de superfície exposta.\\
+\\
+\textbackslash{}subsection\{Ataques a RDP, VPN e Credenciais Comprometidas\}\\
+\\
+Segundo Cen et al., serviços de área remota com senhas fracas ou reaproveitadas são frequentemente violados por \textbackslash{}textit\{brute force\} para entrega do \textbackslash{}textit\{payload\} \textbackslash{}cite\{CEN2024110138\}. Saccone et al. apontam que grupos especializados em setores específicos privilegiam credenciais vazadas ou compradas para evitar ruído de exploração \textbackslash{}cite\{SACCONE2025104264\}. Esses vetores aparecem no estágio P1 da cadeia de ataque de Cen et al., antes mesmo de qualquer persistência ou movimento lateral \textbackslash{}cite\{CEN2024110138\}.\\
+\\
+\textbackslash{}subsection\{Cadeia de Suprimentos e Atualizações Comprometidas\}\\
+\\
+Cen et al. destacam que atualizações de software e dependências confiáveis podem ser adulteradas para entregar o ransomware, explorando a relação de confiança entre fornecedor e cliente \textbackslash{}cite\{CEN2024110138\}. Esse vetor dilui a origem do ataque e dificulta a detecção precoce, pois o tráfego aparenta ser legítimo e assinado.\\
+\\
+\textbackslash{}subsection\{Propagação Interna Automatizada\}\\
+\\
+Após o acesso inicial, a movimentação lateral tende a ser rápida e automatizada. Cen et al. descrevem o uso de protocolos de compartilhamento de arquivos e ferramentas internas para ampliar o alcance do \textbackslash{}textit\{payload\} \textbackslash{}cite\{CEN2024110138\}, enquanto Saccone et al. mapeiam a sequência TTP que vai de escalada de privilégios à criptografia (T1486) \textbackslash{}cite\{SACCONE2025104264\}. Estudos focados em tráfego, como Akibis et al. \textbackslash{}cite\{alibis2024measuring\}, medem a velocidade de varredura e variação de pacotes durante esse movimento lateral, fornecendo indicadores para detecção antes da cifragem. Rollere et al. mostram que gráficos de correlação temporal destacam essa aceleração do comportamento e ajudam a sinalizar hosts recém-comprometidos \textbackslash{}cite\{rollere2025algorithmicsegmentationbehavioralprofiling\}.\\
+\\
+\end{tcolorbox}

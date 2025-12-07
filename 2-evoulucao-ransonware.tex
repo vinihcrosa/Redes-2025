@@ -1,36 +1,17 @@
 \section{Evolução do Ransomware}
 
-A trajetória do ransomware, desde sua primeira aparição em 1989, revela uma 
-transformação profunda tanto em capacidade técnica quanto em modelo operacional.
- Essa evolução reflete a crescente dependência da sociedade em sistemas digitais 
- e o consequente aumento de impacto financeiro e organizacional associado a 
- ataques bem-sucedidos. Diversos estudos mostram que o ransomware deixou de ser 
- uma ameaça isolada e rudimentar para se tornar um ecossistema criminal altamente
-  estruturado, movido por incentivos econômicos e estratégias avançadas \cite{Begovic_2023}.
+A trajetória do ransomware, desde 1989, mostra um salto de códigos rudimentares para operações industriais, guiadas por incentivos econômicos e ecossistemas criminosos maduros. A evolução acompanha a expansão da superfície digital e a profissionalização das gangues, com mudanças claras nas técnicas, vetores de entrega e modelos de extorsão \cite{Begovic_2023,enisa_2023}.
 
 \subsection{Primeira fase: germinação (1989--2009)}
 
-Os primeiros ransomwares surgiram com técnicas criptográficas simples e mecanismos
- de propagação limitados. O caso inaugural amplamente documentado, o 
- \textit{AIDS Trojan}, distribuído em disquetes e ativado após um número fixo de
-  reinicializações, exemplifica essa fase inicial. Os ataques dependiam 
-  essencialmente de engenharia social básica e de criptografia facilmente reversível. 
-  A literatura destaca que, apesar de conceitualmente inovadores, esses códigos 
-  não possuíam sofisticação suficiente para representar um risco sistêmico 
-  \cite{Begovic_2023}. Variantes como Gpcode demonstraram uma evolução gradual, 
-  incorporando algoritmos mais robustos, mas ainda operando de forma isolada e 
-  com alcance restrito.
+Os primeiros ataques (como o \textit{AIDS Trojan}) usavam criptografia fraca e dependiam de engenharia social simples (disquetes e contadores de reinicialização). Apesar de inaugurar o conceito de pagamento por resgate, essa fase carecia de automação e escala, resultando em impacto limitado \cite{Begovic_2023}. Variantes como Gpcode incorporaram algoritmos mais robustos, mas ainda operavam de forma isolada e sem alvo setorial definido.
 
-\subsection{Segunda fase: ativação (2010--2016)}
+\subsection{Segunda fase: industrialização inicial (2010--2016)}
 
-A partir da década de 2010, observa-se uma inflexão significativa no comportamento do ecossistema de ransomware. Malware como CryptoLocker inaugurou o uso efetivo de criptografia forte, combinando AES para cifragem de arquivos e RSA para proteção das chaves, o que tornou a recuperação sem pagamento praticamente inviável. Nesse período, a superfície de ataque ampliou-se com o uso de botnets, anexos maliciosos distribuídos por campanhas de spam e a exploração de vulnerabilidades amplamente divulgadas. Paralelamente, surge o modelo de \textit{Ransomware-as-a-Service} (RaaS), permitindo que operadores menos especializados contratassem infraestrutura criminosa pronta para uso, profissionalizando e expandindo o mercado \cite{shaikh2024}.
+Malwares como CryptoLocker consolidaram o uso combinado de AES e RSA, tornando a recuperação sem chave praticamente inviável e demonstrando viabilidade econômica. Campanhas de \textit{spam}, \textit{exploit kits} e botnets ampliaram a superfície de entrega. Surge o modelo de \textit{Ransomware-as-a-Service} (RaaS), que democratiza a operação criminosa e acelera a proliferação de famílias \cite{shaikh2024,Alzahrani_2025}. A partir de 2014, observa-se a diversificação para plataformas móveis e macOS, explorando brechas em ecossistemas ARM e canais laterais de hardware \cite{2976749.2978360}. Essa fase estabelece a ponte entre experimentação técnica e um mercado clandestino mais estruturado.
 
-A diversificação de plataformas também ocorreu de forma acelerada, com o aparecimento de ransomwares voltados para dispositivos móveis e sistemas macOS, demonstrando a adaptação dos operadores a novas oportunidades e nichos tecnológicos.
+\subsection{Terceira fase: consolidação, dupla extorsão e especialização (2017--presente)}
 
-\subsection{Terceira fase: explosão e consolidação (2017--presente)}
+O surto do WannaCry (2017) marcou a combinação de exploração automatizada (EternalBlue) com criptografia massiva, inaugurando a era das operações de alta velocidade. A partir daí, as gangues incorporam movimentação lateral acelerada, elevação de privilégios e persistência avançada como padrão \cite{SACCONE2025104264}. Modelos de dupla e tripla extorsão (cifrar, exfiltrar e ameaçar terceiros) tornam-se dominantes, elevando o valor dos resgates e a pressão sobre vítimas. Relatórios recentes mostram que o ransomware compõe parcela relevante do panorama de ameaças globais, com campanhas orientadas a setores críticos e cadeias de suprimento \cite{enisa_2023}. Estudos de tráfego e kill chain evidenciam ataques que alternam exploração de CVEs críticas, contas válidas e propagação interna automatizada \cite{CEN2024110138}.
 
-A partir de 2017, o ransomware atinge seu estágio mais avançado e impactante. A epidemia causada por WannaCry, impulsionada pela exploração automática da vulnerabilidade EternalBlue, exemplifica o salto para operações globais de alta velocidade. A partir daí, grupos criminosos passam a empregar estratégias mais complexas que incluem movimentação lateral, elevação de privilégios, persistência avançada e uso intensivo de criptografia de alto desempenho \cite{SACCONE2025104264}.
-
-Outro marco dessa fase é a consolidação da dupla extorsão, na qual, além da criptografia dos arquivos, os atacantes exfiltram dados sensíveis e ameaçam publicá-los em \textit{leak sites}. Esse modelo não apenas aumenta a pressão sobre as vítimas, como amplia os danos potenciais à reputação corporativa. Estudos recentes mostram que muitas gangues evoluíram para modelos ainda mais agressivos, incluindo tripla extorsão (ameaça a clientes e parceiros) e ataques direcionados, caracterizando a abordagem conhecida como \textit{Big Game Hunting} \cite{SACCONE2025104264}.
-
-Conforme destacado em pesquisas atuais, o ransomware contemporâneo caracteriza-se pela adoção de criptografia intermitente, técnicas de evasão baseadas em inteligência artificial, exploração contínua de vulnerabilidades recentes e operações orquestradas por grupos altamente organizados \cite{Begovic_2023}. Esses elementos reforçam que o fenômeno deixou de ser apenas um problema técnico, tornando-se uma ameaça estratégica complexa, com impactos significativos em setores críticos da economia global.
+No estágio atual, observam-se dois eixos principais: (i) diversificação de técnicas para evasão e cifragem (criptografia intermitente, ofuscação e uso de IA) \cite{Begovic_2023}, e (ii) especialização por alvo — gangues generalistas (LockBit, ALPHV) ampliam escala e sofisticação, enquanto grupos "especialistas" preferem phishing e credenciais reaproveitadas em nichos setoriais \cite{SACCONE2025104264}. A evolução recente também reforça a pesquisa de detecção precoce (pré-encriptação), com abordagens baseadas em rede e comportamento \cite{alibis2024measuring,rollere2025algorithmicsegmentationbehavioralprofiling}.
