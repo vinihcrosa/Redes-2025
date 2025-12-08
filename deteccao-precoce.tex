@@ -1,0 +1,68 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=3cm,
+    right=2cm,
+    top=3cm,
+    bottom=2cm
+}
+
+\begin{document}
+
+\section{Detecção Precoce de Ransomware (PERD)}
+
+A Detecção de Ransomware Pré-Criptografia (\textit{Pre-Encryption Ransomware Detection} — PERD) tem como objetivo identificar ataques antes da fase de criptografia, mitigando perdas irreversíveis de dados e interrupções operacionais. Diante da crescente sofisticação das ameaças, essa abordagem tornou-se um componente estratégico essencial da segurança cibernética.
+
+\section{Pontos de Concordância Entre os Estudos}
+
+Os trabalhos analisados demonstram consenso quanto à gravidade do \textit{ransomware}, à necessidade de detecção proativa e às limitações das defesas tradicionais. Os principais pontos convergentes são:
+
+\subsection{Evolução do Ransomware como Ameaça Crítica}
+
+Os estudos reconhecem o \textit{ransomware} como uma das maiores ameaças da atualidade, com crescimento exponencial de ataques em escala global. Esse cenário é impulsionado pelo uso de algoritmos criptográficos eficientes, como AES e Salsa20, aliados a técnicas avançadas de ofuscação e \textit{packing}, que reduzem a eficácia de mecanismos baseados em assinaturas.
+
+\subsection{Centralidade da Detecção Pré-Criptografia}
+
+Há consenso de que a interrupção do ataque antes da fase de criptografia é crucial. Após a criptografia, especialmente com esquemas assimétricos, a recuperação dos dados torna-se inviável na prática. Assim, a PERD é vista como essencial para minimizar impactos financeiros e operacionais.
+
+\subsection{Machine Learning como Abordagem Dominante}
+
+Os artigos convergem ao indicar \textit{Machine Learning} e \textit{Deep Learning} como métodos mais eficazes para detecção moderna. Esses modelos se destacam pela capacidade de capturar padrões comportamentais complexos e de se adaptar a variantes \textit{zero-day}, especialmente em ambientes com grande volume de dados.
+
+\subsection{Impacto do Ransomware-as-a-Service (RaaS)}
+
+Os estudos apontam o modelo \textit{Ransomware-as-a-Service} como um fator central para a expansão do ecossistema de ataques, ao reduzir a barreira técnica de entrada. Isso contribui para o aumento da frequência, escala e diversidade dos incidentes, ampliando a superfície de risco organizacional.
+
+\subsection{Limitações dos Conjuntos de Dados}
+
+Há forte consenso quanto à ausência de \textit{datasets} padronizados. A dependência de bases próprias, muitas vezes desatualizadas, compromete a reprodutibilidade e a comparabilidade entre estudos, sendo apontada como um dos principais gargalos da área.
+
+\section{Pontos de Divergência Entre os Estudos}
+
+Apesar do consenso conceitual, os artigos divergem quanto à operacionalização da PERD e às estratégias técnicas adotadas.
+
+\subsection{Definição da Fase Pré-Criptografia}
+
+As abordagens variam entre:
+\begin{itemize}
+    \item uso de janelas temporais fixas após a execução;
+    \item detecção da primeira chamada a APIs criptográficas;
+    \item correlação entre chamadas de API e eventos de I/O (IRP).
+\end{itemize}
+
+As duas primeiras são simples, porém menos precisas, enquanto a última é mais acurada, mas depende fortemente de sincronização temporal.
+
+\subsection{Abordagens de Análise}
+
+A análise estática é descrita como rápida, porém vulnerável a ofuscação. Já a análise dinâmica é considerada mais eficaz contra técnicas de evasão, mas apresenta maior custo computacional e é suscetível a técnicas de \textit{anti-debugging}.
+
+\subsection{Foco de Plataforma}
+
+Os estudos concentram-se majoritariamente em ambientes Windows, devido à maior incidência de ataques. Há menor atenção a plataformas móveis, com predominância de pesquisas voltadas ao Android em comparação ao iOS.
+
+
+
+\end{document}

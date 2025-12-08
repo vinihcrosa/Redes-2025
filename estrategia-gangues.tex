@@ -1,0 +1,65 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=3cm,
+    right=2cm,
+    top=3cm,
+    bottom=2cm
+}
+\begin{document}
+
+
+\section{Introdução às Estratégias de Gangues de Ransomware}
+
+Os estudos analisados investigam o fenômeno do \textit{ransomware} sob perspectivas complementares, permitindo uma compreensão integrada de sua evolução técnica, organizacional e estratégica. Em conjunto, os trabalhos abordam tanto o funcionamento interno das operações criminosas quanto os fatores que sustentam sua escalabilidade e resiliência.
+
+A literatura selecionada propõe modelos unificados para descrever o comportamento das gangues, sistematizando padrões de ataque e variações estratégicas. Complementarmente, os textos sintetizam tendências evolutivas recentes, destacando lacunas nas estratégias defensivas, ao mesmo tempo em que se aprofundam em estudos de caso para revelar como organizações específicas estruturam seus processos técnicos, negociais e financeiros.
+
+\section{Convergência Estratégica entre as Gangues de \textit{Ransomware}}
+
+Apesar das diferenças metodológicas, as análises convergem em elementos estruturais que definem o ecossistema moderno do \textit{ransomware}. Há consenso de que as gangues operam como organizações criminosas altamente profissionalizadas, com divisão de tarefas, hierarquia funcional e metas econômicas claras. Esse contexto aproxima tais grupos de modelos empresariais, ainda que inseridos em economias ilícitas.
+
+\subsection{Modelo de Escalabilidade e Execução}
+O modelo \textit{Ransomware-as-a-Service} (RaaS) é identificado como o principal mecanismo de escalabilidade, ao permitir a entrada de afiliados com diferentes níveis técnicos, padronizar ferramentas e difundir \textit{playbooks} operacionais. Tal modelo favorece a rápida disseminação de novas variantes e estratégias, tornando o ecossistema altamente adaptativo.
+
+Os ataques são descritos como processos multifásicos que seguem uma sequência relativamente estável, compatível com a noção de \textit{kill chain}. A etapa de \textit{Initial Access} é reiteradamente apontada como o ponto de maior criticidade, sobretudo por meio da exploração de:
+\begin{itemize}
+    \item Aplicações expostas (MITRE ATT\&CK \texttt{T1190});
+    \item Credenciais comprometidas.
+\end{itemize}
+
+A consolidação da dupla extorsão redefine a lógica de resposta das vítimas, pois a ameaça de vazamento de dados reduz a eficácia de políticas baseadas unicamente em \textit{backup}.
+
+\subsection{Padronização Financeira e Negocial}
+Do ponto de vista operacional, destaca-se a padronização das negociações. O estudo de caso focado na \textbf{LockBit} mostra que a comunicação com vítimas não é improvisada, mas guiada por roteiros bem definidos que controlam tempo, linguagem e pressão psicológica. Em paralelo, a utilização de criptomoedas, especialmente Bitcoin, sustenta a viabilidade econômica dessas operações, permitindo fluxos financeiros ágeis e difíceis de rastrear, frequentemente mediados por endereços intermediários.
+
+\section{Divergências Estratégicas entre as Gangues}
+
+As divergências entre as gangues tornam-se mais evidentes no nível tático e na priorização de recursos. O artigo que aborda o \textit{\textbf{ransomware blueprint}} demonstra que a origem geográfica influencia o estilo operacional:
+
+\begin{enumerate}
+    \item \textbf{Ecossistema Russo:} Tende a estratégias mais diretas e orientadas à rapidez, focando na desativação de defesas (\texttt{T1562}) e na inibição de mecanismos de recuperação (\texttt{T1490}), com menor investimento em reconhecimento prolongado.
+    \item \textbf{Ecossistema Chinês:} Demonstra maior ênfase em fases de descoberta, coleta de informações do sistema (\texttt{T1082}), enumeração de contas (\texttt{T1087}) e técnicas de ofuscação (\texttt{T1027}) antes da fase de impacto.
+\end{enumerate}
+
+Outra dimensão de diferenciação está relacionada ao alcance operacional:
+
+\begin{itemize}
+    \item \textbf{Generalistas:} Operam de forma oportunista contra múltiplos setores, combinando técnicas avançadas de movimentação lateral, comprometimento de diretórios e evasão de detecção.
+    \item \textbf{Especialistas:} Restringem seu escopo a nichos específicos, frequentemente explorando vetores menos sofisticados, porém mais repetíveis, como \textit{phishing} e reutilização de credenciais.
+\end{itemize}
+
+Por fim, a análise da \textbf{LockBit} evidencia que fatores políticos e geográficos também moldam decisões estratégicas. A prática de evitar ataques contra alvos russos sugere a existência de regras informais de operação e tolerância estatal implícita, o que introduz uma camada geopolítica pouco discutida em revisões mais genéricas.
+
+
+
+
+
+
+
+
+\end{document}
+
