@@ -1,43 +1,45 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[alf]{abntex2cite}
+\usepackage{geometry}
+\usepackage{comment}
+\geometry{
+    a4paper,
+    left=3cm,
+    right=2cm,
+    top=3cm,
+    bottom=2cm
+}
+
+
+\begin{document}
+
+
+
+
 \section{Modus Operandi: O Ciclo de Ataque de Ransomware}
 
-O \textit{kill chain} de ransomware segue um padrão recorrente identificado em grandes bases de incidentes \cite{SACCONE2025104264,CEN2024110138,enisa_2023}: uma fase inicial de reconhecimento e entrega, seguida de instalação e movimentação lateral, impacto (criptação e sabotagem) e extorsão. A maturidade de Ransomware-as-a-Service permite que afiliados escolham TTPs conforme alvo e pressa operacional \cite{Alzahrani_2025}.
+A sequência de etapas da cadeia de ataque de um ransomware segue um padrão recorrente identificado em grandes bases de incidentes \cite{SACCONE2025104264,CEN2024110138,enisa_2023}: há uma fase inicial de reconhecimento e entrega, seguida de instalação e movimentação lateral (propagação interna na rede), impacto (criptação e sabotagem) e extorsão, as quais são abordadas com mais detalhes em seções subsequentes.
 
-\subsection{Fase 1 — Reconhecimento e Entrega}
 
-O atacante mapeia a superfície exposta (serviços, VPN/RDP, aplicações web) e perfis de usuários suscetíveis a phishing. Vetores típicos incluem:
-\begin{itemize}
-  \item phishing e \textit{malspam} com macros ou links \cite{CEN2024110138,shaikh2024};
-  \item exploração de CVEs em serviços expostos (T1190), muitas vezes N-day de alta severidade \cite{SACCONE2025104264};
-  \item malvertising e \textit{drive-by} via kits de exploit \cite{CEN2024110138};
-  \item cadeia de suprimentos e atualizações adulteradas \cite{enisa_2023}.
-\end{itemize}
+\subsection{Reconhecimento e Entrega}
 
-\subsection{Fase 2 — Instalação, Persistência e Movimentação Lateral}
+O atacante inicia o processo realizando um mapeamento dos serviços acessíveis, interfaces de VPN e RDP (Protocolo de Desktop Remoto), e aplicações web, além de perfis de usuários suscetíveis a ataques de phishing. Nesta etapa, vetores recorrentes incluem: o envio de campanhas de phishing e \textit{malspam} (spam malicioso) contendo macros ou links que infectam dispositivos \cite{CEN2024110138,shaikh2024}; a exploração de vulnerabilidades de alta severidade já conhecidas e corrigidas em serviços expostos (CVEs N-day) \cite{SACCONE2025104264}; o uso de (anúncios maliciosos) \textit{malvertising} e downloads automáticos sem consentimento do usuário (\textit{drive-by downloads}) por meio de kits de exploit \cite{CEN2024110138}.
 
-O payload estabelece persistência (tarefas agendadas, serviços) e coleta credenciais para ampliar o domínio:
-\begin{itemize}
-  \item T1078 (contas válidas) e T1003 (credential dumping) para ganhar acesso lateral \cite{SACCONE2025104264};
-  \item uso de ferramentas nativas (\textit{living off the land}) para evitar detecção \cite{CEN2024110138};
-  \item propagação automática via SMB/AD mal configurados, com velocidade mensurável em tráfego de rede \cite{alibis2024measuring}.
-\end{itemize}
-Grupos generalistas (LockBit, ALPHV) tendem a combinar exploits recentes com bruteforce de RDP/VPN, enquanto especialistas preferem credenciais vazadas e menor ruído \cite{SACCONE2025104264}.
+\subsection{Instalação, Persistência e Movimentação Lateral}
 
-\subsection{Fase 3 — Impacto: Criptografia, Sabotagem e Exfiltração}
+Após a entrega bem-sucedida do código, o malware estabelece persistência no sistema, frequentemente por meio de tarefas agendadas, serviços ou modificações no registro, e inicia a coleta de credenciais com o objetivo de ampliar o domínio do atacante. Técnicas comuns incluem o uso de contas válidas e captura de senhas e credenciais do sistema para facilitar o acesso lateral, isto é, o acesso a outros dispositivos na rede \cite{SACCONE2025104264}. Na mesma linha, é possível citar a adoção de ferramentas nativas do sistema, como PowerShell, PsExec e WMIC, para reduzir sinais de detecção \cite{CEN2024110138}, bem como a propagação automática através de redes SMB ou domínios Active Directory mal configurados, cuja velocidade pode ser monitorada em padrões de tráfego \cite{alibis2024measuring}. 
 
-Antes da cifragem, o malware neutraliza defesas, remove backups locais e inventaria arquivos críticos \cite{Begovic_2023}. Técnicas observadas:
-\begin{itemize}
-  \item criptação seletiva ou intermitente para acelerar impacto e reduzir rastros \cite{Begovic_2023};
-  \item exfiltração prévia de dados sensíveis (dupla/tripla extorsão) \cite{enisa_2023};
-  \item uso de T1486 (Data Encrypted for Impact) como etapa final do ciclo técnico \cite{SACCONE2025104264}.
-\end{itemize}
-Modelos comportamentais recentes indicam aceleração e correlação temporal entre varredura interna, picos de I/O e início da cifragem, úteis para detecção pré-encriptação \cite{rollere2025algorithmicsegmentationbehavioralprofiling}.
+Dentre as diferentes organizações criminosas há distintas formas de operação nesta fase. Grupos de perfil mais generalista, como LockBit e ALPHV, tendem a combinar exploração de vulnerabilidades recentes com ataques de força bruta contra RDP (Protocolo de Desktop Remoto) e VPN, enquanto operadores mais especializados preferem trabalhar com credenciais vazadas e ruído mínimo \cite{SACCONE2025104264}.
 
-\subsection{Fase 4 — Extorsão e Negociação}
+\subsection{Criptografia}
 
-Com dados cifrados e/ou exfiltrados, o grupo inicia comunicação controlada (portais Tor, chats) e apresenta exigências:
-\begin{itemize}
-  \item entrega de chave mediante pagamento e promessa de não vazamento;
-  \item ameaça de publicar dados e/ou conduzir DDoS como pressão adicional \cite{enisa_2023};
-  \item em operações RaaS, divisão de receita entre operador e afiliado \cite{Alzahrani_2025}.
-\end{itemize}
-Essa etapa fecha o ciclo econômico do ataque, mas pode ser reaberta caso a vítima negocie parcialmente ou atrase, gerando novas alavancas de coerção.
+Antes de iniciar a etapa de cifragem, o ransomware normalmente desativa defesas internas, elimina backups locais e realiza um inventário de arquivos críticos para maximizar o dano \cite{Begovic_2023}. Entre as técnicas observadas, destaca-se a criptografia seletiva ou intermitente, que acelera o impacto ao mesmo tempo em que reduz a produção de rastros forenses \cite{Begovic_2023, CEN2024110138}, tal qual o uso sistemático da técnica \textit{Data Encrypted for Impact}, que consiste em criptografar os dados da vítima, tornando estes inacessíveis até que haja algum tipo de resgate (pagamento) \cite{SACCONE2025104264} e marca a fase final do ciclo técnico de ataque.  
+
+\subsection{Extorsão e Negociação}
+
+Com os dados já cifrados e, em muitos casos, também exfiltrados, o grupo atacante inicia um canal de comunicação controlado, geralmente via portais Tor ou chats privados, para apresentar suas exigências. Normalmente, a chave de descriptografia é fornecida mediante pagamento, acompanhada da promessa de não vazamento das informações comprometidas. A pressão sobre a vítima pode aumentar por meio de ameaças de publicação dos dados ou mesmo da realização de ataques DDoS \cite{enisa_2023}. 
+Em operações de \textit{Ransomware-as-a-Service} (RaaS), que funcionam como programas com modelos de ransomware pré-desenvolvidos, essa etapa envolve também a divisão da receita entre os operadores da infraestrutura criminosa e os afiliados responsáveis pela intrusão \cite{Alzahrani_2025}. Ainda que represente o fechamento do ciclo econômico do ataque, essa fase pode se prolongar caso a vítima negocie parcialmente, atrase ou tente resistir, criando margens adicionais para coerção.
+
+\bibliography{refs}
+\end{document}
