@@ -1,22 +1,19 @@
-\section{Detecção Precoce (Pre-Encryption)}
+\section{Detecção Precoce de Ransomware (PERD)}
 
-A detecção tradicional ocorre após o início da criptografia, quando já é tarde para evitar danos. Pesquisas recentes buscam detecção antes da destruição.
+A detecção pré-criptografia busca interromper o ataque antes que a cifragem torne a recuperação impraticável. Pesquisas recentes reforçam que a fase pré-impacto concentra sinais úteis, especialmente quando combinam análise comportamental e técnicas de aprendizado de máquina \cite{CEN2024110138,shaikh2024,rollere2025algorithmicsegmentationbehavioralprofiling}. O aumento do volume e da velocidade das campanhas — impulsionado por RaaS — torna a PERD peça central de resiliência \cite{Alzahrani_2025}.
 
-\subsection{Análise de API Calls}
+\subsection{Convergências na Literatura}
+\textbf{Ameaça crítica.} O ransomware é tratado como uma das principais ameaças atuais, sustentado por criptografia robusta e ofuscação que limitam assinaturas tradicionais \cite{Begovic_2023,CEN2024110138}.\\
+\textbf{Centralidade da fase pré-criptografia.} Há consenso de que, após a cifragem (especialmente assimétrica), a recuperação é inviável; detectar antes do impacto é essencial para reduzir perdas \cite{Begovic_2023,shaikh2024}.\\
+\textbf{Predominância de ML/DL.} Modelos de \textit{machine learning} e \textit{deep learning} dominam as propostas, pela capacidade de capturar padrões complexos e adaptar-se a variantes \textit{zero-day} \cite{shaikh2024,rollere2025algorithmicsegmentationbehavioralprofiling}.\\
+\textbf{Influência do RaaS.} A oferta de kits e infraestrutura em \textit{RaaS} amplia a frequência e diversidade de ataques, elevando a pressão por detecção proativa \cite{Alzahrani_2025,SACCONE2025104264}.\\
+\textbf{Déficit de dados padronizados.} A falta de \textit{datasets} públicos e atualizados limita comparabilidade e reprodutibilidade; muitos estudos operam com bases próprias e pouco documentadas \cite{shaikh2024,CEN2024110138}.
 
-Monitoramento de chamadas relacionadas a criptografia e I/O.
+\subsection{Divergências e Desafios}
+\textbf{Delimitação da fase pré-criptografia.} Métodos variam entre janelas fixas após execução, primeira chamada a APIs criptográficas e correlação de chamadas de API com eventos de I/O (IRP); esta última é mais precisa, porém exige sincronização temporal e captura mais custosa \cite{shaikh2024}.\\
+\textbf{Análise estática vs. dinâmica.} A análise estática é rápida, mas frágil a ofuscação; a dinâmica é mais robusta a evasão, porém cara computacionalmente e alvo de \textit{anti-debugging} \cite{Begovic_2023,CEN2024110138}.\\
+\textbf{Plataforma.} A maioria das abordagens foca Windows, onde a incidência é maior. Pesquisas em dispositivos móveis são menos frequentes e concentram-se em Android, deixando iOS pouco explorado \cite{shaikh2024}.\\
+\textbf{Velocidade de propagação.} Estudos que analisam tráfego mostram que a rapidez da movimentação lateral afeta a janela útil para intervenção; medir padrões de propagação ajuda a definir limiares e alarmes \cite{alibis2024measuring}.
 
-\subsection{Aprendizado de Máquina}
-
-Modelos treinados com:
-\begin{itemize}
-  \item padrões de acesso a arquivos;
-  \item sequências de APIs;
-  \item comportamento do processo.
-\end{itemize}
-
-\subsection{Correlação Temporal API + IRP}
-
-Método mais preciso, pois identifica o momento exato em que o ransomware inicia sua preparação para criptografia.
-
-Usuários com detecção precoce perdem entre 0\% e 5\% dos arquivos, enquanto detecção tardia pode resultar em perda total.
+\subsection{Indicadores e Sinais Operacionais}
+Modelos recentes combinam múltiplas fontes: chamadas de API de criptografia, padrões de I/O, criação de processos e alterações em chaves de registro, buscando reduzir falsos positivos. Abordagens baseadas em grafos temporais de correlação de eventos têm se mostrado promissoras para capturar sequências curtas de pré-impacto \cite{rollere2025algorithmicsegmentationbehavioralprofiling}. A integração desses sinais a playbooks de resposta rápida é apontada como caminho prático para conter ataques antes da cifragem.

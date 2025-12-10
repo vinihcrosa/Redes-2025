@@ -1,14 +1,16 @@
 \section{Conclusão}
 
-Ransomware evoluiu para uma ameaça altamente organizada, automatizada e apoiada por um mercado lucrativo de ferramentas criminosas. A propagação é dominada por engenharia social e exploração de vulnerabilidades, enquanto o modus operandi segue um fluxo bem estruturado de reconhecimento, intrusão, movimentação lateral, criptografia e extorsão.
+O ransomware consolidou-se como ameaça crítica, sustentada por um ecossistema \textit{Ransomware-as-a-Service} que padroniza ferramentas, acelera variantes e amplia o alcance de afiliados \cite{SACCONE2025104264,Alzahrani_2025}. As campanhas combinam exploração de serviços expostos e credenciais, \textit{phishing} em escala e movimento lateral automatizado, culminando em cifragem e extorsão roteirizada — frequentemente com exfiltração prévia de dados \cite{CEN2024110138,enisa_2023}.
+
+Os estudos indicam que respostas eficazes dependem de estratégias multilayer: gestão ágil de vulnerabilidades e credenciais, proteção contra \textit{phishing}, endurecimento de RDP/AD e monitoramento comportamental orientado à \textit{kill chain}. A detecção pré-criptografia emerge como peça central para interromper o ataque antes da cifragem irreversível \cite{Begovic_2023,shaikh2024,rollere2025algorithmicsegmentationbehavioralprofiling}. O dimensionamento de tráfego lateral também ajuda a reduzir a janela de propagação \cite{alibis2024measuring}.
 
 Como consequência, a defesa moderna deve priorizar:
 \begin{itemize}
-  \item correção rápida de CVEs;
-  \item proteção contra phishing;
-  \item hardening de RDP e Active Directory;
-  \item monitoramento comportamental;
-  \item detecção precoce.
+  \item correção rápida de CVEs expostas e gestão de credenciais;
+  \item proteção contra \textit{phishing} e canais de entrega;
+  \item \textit{hardening} de RDP e Active Directory;
+  \item monitoramento comportamental com sinais de pré-criptografia;
+  \item exercícios de resposta que considerem extorsão e exposição pública.
 \end{itemize}
 
-A pesquisa recente demonstra que apenas estratégias multidimensionais conseguem deter ferramentas de ataque que evoluem mais rápido do que os mecanismos tradicionais de segurança.
+A literatura reforça que apenas abordagens multidimensionais e orientadas a dados conseguem acompanhar a velocidade de evolução das operações de ransomware, conectando prevenção, detecção e resposta em ciclos curtos de adaptação \cite{CEN2024110138,SACCONE2025104264}.

@@ -1,35 +1,16 @@
-\section{Estratégias de Gangues Criminosas}
 
-A análise de mais de 16.000 ataques identifica dois perfis principais.
+\section{Estratégias de Gangues de Ransomware}
 
-\subsection{Gangues Generalistas}
+Os estudos revisados descrevem um ecossistema criminal altamente profissionalizado, com divisão de funções, metas econômicas e uso intensivo de inteligência sobre alvos. Modelos de dados recentes mapeiam padrões comuns entre mais de 150 gangues, reforçando a ideia de um \textit{blueprint} de ataque compartilhado e adaptável \cite{SACCONE2025104264}.
 
-Atacam múltiplos setores e utilizam técnicas avançadas:
-\begin{itemize}
-  \item LockBit;
-  \item BlackCat/ALPHV;
-  \item Cl0p.
-\end{itemize}
+\subsection{Convergência: Kill Chain Padronizada e Escala}
+Há consenso sobre uma cadeia de ataque recorrente: acesso inicial, elevação/movimentação lateral, sabotagem de recuperação e cifragem, seguida de extorsão estruturada \cite{SACCONE2025104264,CEN2024110138}. O modelo \textit{Ransomware-as-a-Service} (RaaS) fornece playbooks e infraestrutura para afiliados, permitindo entrada de atores com diferentes níveis técnicos e rápida disseminação de variantes \cite{Alzahrani_2025,SACCONE2025104264}. A fase de \textit{Initial Access} é crítica, dominada por exploração de CVEs em serviços expostos (\texttt{T1190}) e uso de credenciais comprometidas \cite{SACCONE2025104264}.
 
-Características marcantes:
-\begin{itemize}
-  \item automação;
-  \item exploração em larga escala;
-  \item criptografia rápida;
-  \item alta taxa de sucesso.
-\end{itemize}
+\subsection{Extorsão e Monetização}
+A dupla (e, em alguns casos, tripla) extorsão virou padrão: cifragem combinada a exfiltração e ameaça pública, o que reduz a eficácia de políticas baseadas só em \textit{backup} \cite{enisa_2023}. Estudos de caso, como o da LockBit, mostram negociações roteirizadas, com contadores regressivos e canais em Tor, além de uso de criptomoedas e endereços intermediários para ofuscar fluxos financeiros \cite{SACCONE2025104264}. Programas RaaS dividem receita entre operadores da infraestrutura e afiliados responsáveis pela intrusão \cite{Alzahrani_2025}.
 
-\subsection{Gangues Especializadas}
+\subsection{Divergências Táticas e Geográficas}
+Embora compartilhem a cadeia básica, as gangues diferem na ênfase tática. Grupos de origem russa tendem a priorizar rapidez, desativação de defesas (\texttt{T1562}) e inibição de recuperação (\texttt{T1490}), com menos tempo em reconhecimento prolongado. Já atores associados à China investem mais em descoberta, inventário de sistemas (\texttt{T1082}), enumeração de contas (\texttt{T1087}) e ofuscação (\texttt{T1027}) antes do impacto \cite{SACCONE2025104264}. A divisão entre generalistas (LockBit, ALPHV) e especialistas também aparece: os primeiros atacam setores diversos combinando múltiplas técnicas avançadas, enquanto os segundos focam nichos específicos com vetores repetíveis, como \textit{phishing} e credenciais reutilizadas \cite{SACCONE2025104264}.
 
-Focam em setores específicos:
-\begin{itemize}
-  \item saúde;
-  \item finanças;
-  \item manufatura.
-\end{itemize}
-
-Usam técnicas mais simples:
-\begin{itemize}
-  \item spear-phishing;
-  \item credenciais vazadas.
-\end{itemize}
+\subsection{Implicações Defensivas}
+O padrão de compartilhamento de TTPs e infraestrutura indica alta interconexão entre gangues, exigindo defesas orientadas à kill chain completa (superfície exposta, credenciais, movimento lateral e recuperação). A consolidação de leak sites e de automação de negociação sugere que respostas precisam considerar não só restauração técnica, mas também gestão de exposição pública e de prazos de extorsão \cite{enisa_2023,SACCONE2025104264}.

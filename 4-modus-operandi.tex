@@ -1,45 +1,20 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage[alf]{abntex2cite}
-\usepackage{geometry}
-\usepackage{comment}
-\geometry{
-    a4paper,
-    left=3cm,
-    right=2cm,
-    top=3cm,
-    bottom=2cm
-}
-
-
-\begin{document}
-
-
-
-
 \section{Modus Operandi: O Ciclo de Ataque de Ransomware}
 
-A sequência de etapas da cadeia de ataque de um ransomware segue um padrão recorrente identificado em grandes bases de incidentes \cite{SACCONE2025104264,CEN2024110138,enisa_2023}: há uma fase inicial de reconhecimento e entrega, seguida de instalação e movimentação lateral (propagação interna na rede), impacto (criptação e sabotagem) e extorsão, as quais são abordadas com mais detalhes em seções subsequentes.
+A literatura recente descreve um \textit{blueprint} recorrente para campanhas de ransomware: reconhecimento e entrega, instalação com persistência e movimentação lateral, impacto (criptação e sabotagem) e extorsão final. Grandes levantamentos de incidentes mostram que essas fases se repetem com variações táticas conforme a superfície exposta e o perfil da vítima \cite{SACCONE2025104264,CEN2024110138,enisa_2023}.
 
 
 \subsection{Reconhecimento e Entrega}
 
-O atacante inicia o processo realizando um mapeamento dos serviços acessíveis, interfaces de VPN e RDP (Protocolo de Desktop Remoto), e aplicações web, além de perfis de usuários suscetíveis a ataques de phishing. Nesta etapa, vetores recorrentes incluem: o envio de campanhas de phishing e \textit{malspam} (spam malicioso) contendo macros ou links que infectam dispositivos \cite{CEN2024110138,shaikh2024}; a exploração de vulnerabilidades de alta severidade já conhecidas e corrigidas em serviços expostos (CVEs N-day) \cite{SACCONE2025104264}; o uso de (anúncios maliciosos) \textit{malvertising} e downloads automáticos sem consentimento do usuário (\textit{drive-by downloads}) por meio de kits de exploit \cite{CEN2024110138}.
+Os atacantes mapeiam serviços expostos (VPN, RDP, aplicações web) e perfis suscetíveis a \textit{phishing}. Vetores recorrentes incluem campanhas de \textit{malspam} com macros ou links maliciosos \cite{CEN2024110138,shaikh2024}, exploração de CVEs críticas já conhecidas (N-day) em portas públicas \cite{SACCONE2025104264} e \textit{malvertising}/\textit{drive-by downloads} por kits de exploit \cite{CEN2024110138}. Em alvos corporativos, ataques de força bruta a RDP e coleta de credenciais vazadas complementam a fase inicial \cite{SACCONE2025104264}.
 
 \subsection{Instalação, Persistência e Movimentação Lateral}
 
-Após a entrega bem-sucedida do código, o malware estabelece persistência no sistema, frequentemente por meio de tarefas agendadas, serviços ou modificações no registro, e inicia a coleta de credenciais com o objetivo de ampliar o domínio do atacante. Técnicas comuns incluem o uso de contas válidas e captura de senhas e credenciais do sistema para facilitar o acesso lateral, isto é, o acesso a outros dispositivos na rede \cite{SACCONE2025104264}. Na mesma linha, é possível citar a adoção de ferramentas nativas do sistema, como PowerShell, PsExec e WMIC, para reduzir sinais de detecção \cite{CEN2024110138}, bem como a propagação automática através de redes SMB ou domínios Active Directory mal configurados, cuja velocidade pode ser monitorada em padrões de tráfego \cite{alibis2024measuring}. 
-
-Dentre as diferentes organizações criminosas há distintas formas de operação nesta fase. Grupos de perfil mais generalista, como LockBit e ALPHV, tendem a combinar exploração de vulnerabilidades recentes com ataques de força bruta contra RDP (Protocolo de Desktop Remoto) e VPN, enquanto operadores mais especializados preferem trabalhar com credenciais vazadas e ruído mínimo \cite{SACCONE2025104264}.
+Depois da entrega, o malware cria persistência (tarefas agendadas, serviços ou registro) e coleta credenciais para ampliar acesso. Técnicas de movimentação lateral incluem uso de contas válidas, ferramentas nativas como PowerShell, PsExec e WMIC (\textit{living off the land}) e propagação automática via SMB ou domínios Active Directory expostos \cite{CEN2024110138,SACCONE2025104264}. Padrões de tráfego lateral podem ser medidos para estimar velocidade de propagação \cite{alibis2024measuring}. Grupos generalistas (LockBit, ALPHV) costumam mesclar exploração de CVEs recentes com força bruta em RDP/VPN, enquanto operadores especializados preferem operar com credenciais vazadas e menor ruído \cite{SACCONE2025104264}.
 
 \subsection{Criptografia}
 
-Antes de iniciar a etapa de cifragem, o ransomware normalmente desativa defesas internas, elimina backups locais e realiza um inventário de arquivos críticos para maximizar o dano \cite{Begovic_2023}. Entre as técnicas observadas, destaca-se a criptografia seletiva ou intermitente, que acelera o impacto ao mesmo tempo em que reduz a produção de rastros forenses \cite{Begovic_2023, CEN2024110138}, tal qual o uso sistemático da técnica \textit{Data Encrypted for Impact}, que consiste em criptografar os dados da vítima, tornando estes inacessíveis até que haja algum tipo de resgate (pagamento) \cite{SACCONE2025104264} e marca a fase final do ciclo técnico de ataque.  
+Antes de cifrar, operadores desativam defesas locais, removem \textit{backups} e inventariam arquivos críticos para maximizar impacto \cite{Begovic_2023}. São frequentes a criptografia seletiva ou intermitente (para acelerar execução e reduzir rastros) \cite{Begovic_2023,CEN2024110138} e a sabotagem de recuperação (\texttt{T1490}) combinada à ação \textit{Data Encrypted for Impact} (\texttt{T1486}) \cite{SACCONE2025104264}. Em campanhas de dupla extorsão, a exfiltração ocorre antes ou em paralelo à cifragem para aumentar pressão sobre a vítima \cite{enisa_2023}.
 
 \subsection{Extorsão e Negociação}
 
-Com os dados já cifrados e, em muitos casos, também exfiltrados, o grupo atacante inicia um canal de comunicação controlado, geralmente via portais Tor ou chats privados, para apresentar suas exigências. Normalmente, a chave de descriptografia é fornecida mediante pagamento, acompanhada da promessa de não vazamento das informações comprometidas. A pressão sobre a vítima pode aumentar por meio de ameaças de publicação dos dados ou mesmo da realização de ataques DDoS \cite{enisa_2023}. 
-Em operações de \textit{Ransomware-as-a-Service} (RaaS), que funcionam como programas com modelos de ransomware pré-desenvolvidos, essa etapa envolve também a divisão da receita entre os operadores da infraestrutura criminosa e os afiliados responsáveis pela intrusão \cite{Alzahrani_2025}. Ainda que represente o fechamento do ciclo econômico do ataque, essa fase pode se prolongar caso a vítima negocie parcialmente, atrase ou tente resistir, criando margens adicionais para coerção.
-
-\bibliography{refs}
-\end{document}
+Com dados cifrados e, muitas vezes, já exfiltrados, os atacantes abrem canais em Tor ou chats privados para negociar valores e prazos. A pressão aumenta por meio de ameaças de vazamento público, leilões em \textit{leak sites} e, em alguns casos, ataques DDoS adicionais \cite{enisa_2023,SACCONE2025104264}. Em operações \textit{RaaS}, a receita é dividida entre operadores da infraestrutura e afiliados responsáveis pela intrusão \cite{Alzahrani_2025}. Contadores regressivos e scripts automatizados de comunicação ajudam a manter coerção contínua até pagamento ou ruptura da negociação.

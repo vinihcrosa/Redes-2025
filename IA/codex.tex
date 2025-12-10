@@ -47,3 +47,19 @@ Cen et al. destacam que atualizações de software e dependências confiáveis p
 Após o acesso inicial, a movimentação lateral tende a ser rápida e automatizada. Cen et al. descrevem o uso de protocolos de compartilhamento de arquivos e ferramentas internas para ampliar o alcance do \textbackslash{}textit\{payload\} \textbackslash{}cite\{CEN2024110138\}, enquanto Saccone et al. mapeiam a sequência TTP que vai de escalada de privilégios à criptografia (T1486) \textbackslash{}cite\{SACCONE2025104264\}. Estudos focados em tráfego, como Akibis et al. \textbackslash{}cite\{alibis2024measuring\}, medem a velocidade de varredura e variação de pacotes durante esse movimento lateral, fornecendo indicadores para detecção antes da cifragem. Rollere et al. mostram que gráficos de correlação temporal destacam essa aceleração do comportamento e ajudam a sinalizar hosts recém-comprometidos \textbackslash{}cite\{rollere2025algorithmicsegmentationbehavioralprofiling\}.\\
 \\
 \end{tcolorbox}
+
+\begin{tcolorbox}[chat,title=Usuário]
+o que ta dando erro para compilar?\\
+\end{tcolorbox}
+
+\begin{tcolorbox}[chat,title=Codex Chat]
+Erro vinha de 4-modus-operandi.tex: o arquivo incluía \textbackslash{}documentclass, \textbackslash{}usepackage, \textbackslash{}geometry, \textbackslash{}begin\{document\} e \textbackslash{}bibliography dentro do conteúdo, gerando “Can be used only in preamble” ao compilar pelo main.tex.\\
+\\
+Limpei esse arquivo para conter só as seções e texto (sem preâmbulo nem bibliografia) e rodei latexmk -pdf sem novos erros; main.pdf foi gerado normalmente.\\
+\\
+Próximo passo: se quiser, verifique o PDF atualizado para garantir que a seção ficou como esperado.\\
+\end{tcolorbox}
+
+\begin{tcolorbox}[chat,title=Usuário]
+chat, com base na bibliografia contida em /docs e no artigo escrito, edite o arquivo 1-introducao.tex, mude para organizar as informações\\
+\end{tcolorbox}
